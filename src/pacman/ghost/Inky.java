@@ -75,12 +75,12 @@ public class Inky extends Ghost {
      * @return One diagonal block out from the bottom right corner
      */
     @Override
-    public Position home(PacmanGame game){
+    public Position home(PacmanGame game) {
         // default - no change to current position
         Position homePosition = getPosition();
         PacmanBoard board = game.getBoard();
         // SCATTER - get home position
-        if(getPhase() == Phase.SCATTER) {
+        if (getPhase() == Phase.SCATTER) {
             homePosition = new Position(board.getWidth(), board.getHeight());
         }
         return homePosition;

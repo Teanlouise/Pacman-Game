@@ -74,7 +74,7 @@ public class Pinky extends Ghost {
      * @return One diagional block out from the top left corner
      */
     @Override
-    public Position home(PacmanGame game){
+    public Position home(PacmanGame game) {
         // default - no change to current position
         Position homePosition = getPosition();
         // SCATTER - get home position

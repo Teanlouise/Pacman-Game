@@ -57,7 +57,7 @@ public class Blinky extends Ghost {
         Position homePosition = getPosition();
         // SCATTER - get home position
         if(getPhase() == Phase.SCATTER) {
-            homePosition = new Position(game.getBoard().getWidth() , -1);
+            homePosition = new Position(game.getBoard().getWidth(), -1);
         }
         return homePosition;
     }

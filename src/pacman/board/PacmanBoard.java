@@ -271,7 +271,7 @@ public class PacmanBoard {
                 sb.append(board[x][y].getChar());
             }
             // Reached end of row, add line but not for the last line
-            if (y != getHeight() -1) {
+            if (y != getHeight() - 1) {
                 sb.append(System.lineSeparator());
             }
         }

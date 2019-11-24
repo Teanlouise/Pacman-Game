@@ -179,7 +179,7 @@ public class PacmanGame {
         }
 
         // 1 move Hunter
-       hunter.move(this);
+        hunter.move(this);
 
         // 2 - Hit ghosts
         for (Ghost g : getGhosts()) {
@@ -212,9 +212,8 @@ public class PacmanGame {
             board.reset();
             resetAllGhosts();
             resetHunter();
-        }
-        // 8 - increase tick value
-        else {
+        } else {
+            // 8 - increase tick value
             tick += 1;
         }
     }

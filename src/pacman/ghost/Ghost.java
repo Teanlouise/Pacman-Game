@@ -185,8 +185,8 @@ public abstract class Ghost extends Entity {
         int boardHeight = game.getBoard().getHeight();
         Position current = getPosition();
 
-        int targetX = (current.getX() *24 % (2 * boardWidth)) - boardWidth;
-        int targetY = (current.getY()*36 % (2 * boardHeight)) - boardHeight;
+        int targetX = (current.getX() * 24 % (2 * boardWidth)) - boardWidth;
+        int targetY = (current.getY() * 36 % (2 * boardHeight)) - boardHeight;
         return new Position(targetX, targetY);
     }
 
@@ -199,7 +199,7 @@ public abstract class Ghost extends Entity {
      * @return the target position according to the Ghost Phase conditions.
      */
     private Position getTarget(PacmanGame game) {
-        switch(getPhase()){
+        switch (getPhase()) {
             case CHASE:
                 return chaseTarget(game);
             case SCATTER:

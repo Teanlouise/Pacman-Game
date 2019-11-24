@@ -78,7 +78,7 @@ public class GameWriter {
         for (int i = 0; i < scoreList.size(); i++) {
             builder.append(scoreList.get(i));
             // The last score should not have a newline.
-            if (i < scoreList.size() -1) {
+            if (i < scoreList.size() - 1) {
                 builder.append(System.lineSeparator());
             }
         }
