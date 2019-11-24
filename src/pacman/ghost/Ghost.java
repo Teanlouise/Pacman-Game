@@ -18,8 +18,9 @@ public abstract class Ghost extends Entity {
 
 
     /**
-     * Creates a ghost which is alive and starts in the SCATTER phase with a duration of Phase.SCATTER.duration().
-     * This ghost also has a default position of (0, 0) and a default direction of facing up.
+     * Creates a ghost which is alive and starts in the SCATTER phase with a
+     * duration of Phase.SCATTER.duration(). This ghost also has a default
+     * position of (0, 0) and a default direction of facing up.
      */
     public Ghost() {
         this.phaseDuration = Phase.SCATTER.getDuration();
@@ -28,8 +29,8 @@ public abstract class Ghost extends Entity {
     }
 
     /**
-     * Sets the Ghost Phase and its duration overriding any current phase information.
-     * If Phase is null then no changes are made.
+     * Sets the Ghost Phase and its duration overriding any current phase
+     * information. If Phase is null then no changes are made.
      * If the duration is less than zero then the duration is set to 0.
      * @param newPhase - to set the ghost to.
      * @param duration - of ticks for the phase to lat for
@@ -111,8 +112,8 @@ public abstract class Ghost extends Entity {
     }
 
     /**
-     * Resets the ghost back to an initial state where it is "alive" with a Phase of SCATTER
-     * with the SCATTER.getDuration() and facing UP.
+     * Resets the ghost back to an initial state where it is "alive" with a
+     * Phase of SCATTER with the SCATTER.getDuration() and facing UP.
      */
     public void reset() {
         dead = false;

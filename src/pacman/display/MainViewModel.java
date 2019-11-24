@@ -65,7 +65,7 @@ public class MainViewModel {
 
     /**
      * Updates the title of the game window and the score view model.
-     * @ensures title format is "[title] by [author]" without the quotes or brackets.
+     * @ensures title format is "[title] by [author]" without quotes or brackets.
      * For example, "Default CSSE2002 PacMan Map by Evan Hughes".
      * There should be a single space either side of "by"
      */

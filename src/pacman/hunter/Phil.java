@@ -13,7 +13,7 @@ public class Phil extends Hunter {
     }
 
     /**
-     * Creates a Phil Hunter by copying the internal state of another hunter. see Hunter(Hunter)
+     * Creates a Phil Hunter by copying the internal state of another hunter.
      * @param original -  - hunter to copy from
      */
     public Phil(Hunter original) {

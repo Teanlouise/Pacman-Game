@@ -3,7 +3,8 @@ package pacman.hunter;
 import pacman.game.PacmanGame;
 
 /**
- * A Speedy hunter that has a special ability that allows the hunter to travel twice as fast.
+ * A Speedy hunter that has a special ability that allows the hunter to travel
+ * twice as fast.
  * In Assignment 2 we will implement this hunters special ability.
  */
 public class Speedy extends Hunter {
@@ -16,7 +17,7 @@ public class Speedy extends Hunter {
     }
 
     /**
-     * Creates a Speedy Hunter by copying the internal state of another hunter. see Hunter(Hunter)
+     * Creates a Speedy Hunter by copying the internal state of another hunter.
      * @param original hunter to copy from
      */
     public Speedy(Hunter original) {

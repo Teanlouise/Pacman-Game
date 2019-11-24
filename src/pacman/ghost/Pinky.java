@@ -6,7 +6,8 @@ import pacman.util.Position;
 
 /**
  * Pinky is a cunning ghost that tries to ambush the hunter.
- * When not chasing the hunter down, Pinky likes to hang out in the top left corner of the board in a pink glow.
+ * When not chasing the hunter down, Pinky likes to hang out in the top left
+ * corner of the board in a pink glow.
  */
 public class Pinky extends Ghost {
 

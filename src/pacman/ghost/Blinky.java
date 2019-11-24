@@ -5,7 +5,8 @@ import pacman.util.Position;
 
 /**
  * Blinky is a ghost that behaves in a very aggressive manner towards a hunter.
- * When not chasing the hunter down, Blinky likes to hang out in the top right corner of the board in a red glow.
+ * When not chasing the hunter down, Blinky likes to hang out in the top right
+ * corner of the board in a red glow.
  */
 public class Blinky extends Ghost {
 

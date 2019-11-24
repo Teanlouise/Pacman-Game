@@ -17,7 +17,7 @@ public class Hungry extends Hunter {
     }
 
     /**
-     * Creates a Hungry Hunter by copying the internal state of another hunter. see Hunter(Hunter)
+     * Creates a Hungry Hunter by copying the internal state of another hunter.
      * @param original hunter to copy from
      */
     public Hungry(Hunter original) {
@@ -25,8 +25,8 @@ public class Hungry extends Hunter {
     }
 
     /**
-     * If Hungry's special is active then if we are in the same tile of a ghost, that ghost will be killed.
-     * Otherwise we behave as a normal Hunter. see Hunter.hit(Ghost)
+     * If Hungry's special is active then if we are in the same tile of a ghost,
+     * that ghost will be killed. Otherwise we behave as a normal Hunter. 
      * @overide hit in class Hunter
      * @param ghost to check if were colliding with.
      */
@@ -35,6 +35,7 @@ public class Hungry extends Hunter {
         Position ghostPosition = ghost.getPosition();
         Position myPosition = this.getPosition();
 
+        // TODO: 11/24/19 Check names in solution (want smaller)
         // Check if position of hunter and ghost has same x and y
         if (myPosition.getX() == ghostPosition.getX() && myPosition.getY() == ghostPosition.getY()) {
             if (this.isSpecialActive()) {

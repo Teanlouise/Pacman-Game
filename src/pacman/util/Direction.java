@@ -3,6 +3,7 @@ package pacman.util;
 /**
  * Direction represents directions in a 2D plane. Each direction stores a relative position
  */
+
 public enum Direction {
     LEFT(-1, 0),
     RIGHT(1, 0),
@@ -18,14 +19,14 @@ public enum Direction {
     }
 
     /** Gets the offset associated with this direction.*/
-    public Position offset(){
+    public Position offset() {
         return new Position(this.x, this.y);
     }
 
     /**Gets the opposite direction to this direction.*/
     public Direction opposite() {
-       switch (this) {
-           case LEFT:
+        switch (this) {
+            case LEFT:
                 return RIGHT;
             case RIGHT:
                 return LEFT;

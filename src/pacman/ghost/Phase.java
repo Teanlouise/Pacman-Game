@@ -1,9 +1,11 @@
 package pacman.ghost;
 
 /**
- * Phase Defines the different phases a ghost can be in. The phases are defined as "CHASE", "SCATTER" and "FRIGHTENED".
+ * Phase Defines the different phases a ghost can be in. The phases are defined
+ * as "CHASE", "SCATTER" and "FRIGHTENED".
  *      "CHASE" - Phase where the ghosts chase the hunter. Has a duration of 20.
- *      "FRIGHTENED" - Phase where the ghosts are frightened and confused.Has a duration of 30
+ *      "FRIGHTENED" - Phase where the ghosts are frightened and confused.
+ *       Has a duration of 30
  *      "SCATTER" - Phase where the ghosts run home. Has a duration of 10. *
  */
 public enum Phase {

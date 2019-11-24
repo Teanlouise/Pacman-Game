@@ -5,9 +5,11 @@ import pacman.util.Position;
 import java.util.Arrays;
 
 /**
- * Represents the Pac Man game board. The board can be any size, it is set out as a grid with each space containing
- * only one BoardItem. game boards are by default surrounded by a BoardItem.WALL with every other space being BoardItem.NONE.
- * The coordinate positions for the board is the top left position is (0, 0) and the bottom right position is (getWidth-1, getHeight-1).
+ * Represents the Pac Man game board. The board can be any size, it is set out
+ * as a grid with each space containing only one BoardItem. game boards are by
+ * default surrounded by a BoardItem.WALL with every other space being
+ * BoardItem.NONE. The coordinate positions for the board is the top left
+ * position is (0, 0) and the bottom right position is (getWidth-1, getHeight-1).
  */
 public class PacmanBoard {
     private int width;
@@ -15,11 +17,13 @@ public class PacmanBoard {
     private BoardItem[][] board;
 
     /**
-     * Constructor taking the getWidth and getHeight creating a board that is filled with BoardItem.NONE
-     * except a 1 block wide border wall around the entire board ( BoardItem.WALL ).
+     * Constructor taking the getWidth and getHeight creating a board that is
+     * filled with BoardItem.NONNE, except a 1 block wide border wall around the
+     * entire board ( BoardItem.WALL ).
      * @param width the horizontal size of the board which is greater than zero.
      * @param height the vertical size of the board which is greater than zero.
-     * @throws IllegalArgumentException- when getHeight || getWidth is less than or equal to 0.
+     * @throws IllegalArgumentException- when getHeight || getWidth is less than
+     * or equal to 0.
      */
     public PacmanBoard(int width, int height) throws IllegalArgumentException {
         if (width <= 0 || height <= 0) {
@@ -46,8 +50,9 @@ public class PacmanBoard {
 
     /**
      * Constructor taking an existing PacmanBoard and making a deep copy.
-     * A deep copy should have the same getWidth, getHeight and board as the given board.
-     * When a change is made to the other board this should not change this copy.
+     * A deep copy should have the same getWidth, getHeight and board as the
+     * given board, When a change is made to the other board this should not
+     * change this copy.
      * @param other copy of an existing PacmanBoard.
      * @throws NullPointerException if copy is null.
      */
@@ -84,10 +89,12 @@ public class PacmanBoard {
      * Sets a tile on the board to an item.
      * @param position the position to place the item
      * @param item the board item that is to be placed at the position
-     * @throws IndexOutOfBoundsException when the position trying to be set is not within the board
+     * @throws IndexOutOfBoundsException when the position trying to be set is
+     * not within the board
      * @throws NullPointerException when the position or item is null.
      */
-    public void setEntry(Position position, BoardItem item) throws IndexOutOfBoundsException, NullPointerException {
+    public void setEntry(Position position, BoardItem item)
+            throws IndexOutOfBoundsException, NullPointerException {
         // Check for exceptions first
         // Assume can place anywhere on board i.e. NULL or NONE space
         if (position == null || item == null) {
@@ -98,7 +105,7 @@ public class PacmanBoard {
             throw new IndexOutOfBoundsException();
         }
 
-        // Check if PacmanSpawn or GhostSpawn already exist, if so replace with NONE
+        // Check if PacmanSpawn or GhostSpawn already exist, if so replace NONE
         switch (item) {
             case PACMAN_SPAWN:
                 if (getPacmanSpawn() != null) {
@@ -119,10 +126,11 @@ public class PacmanBoard {
      * Returns what item the board has on a given position.
      * @param position wanting to be checked
      * @return BoardItem at the location given.
-     * @throws IndexOutOfBoundsException when the position is not within the board.
+     * @throws IndexOutOfBoundsException when the position is not within board.
      * @throws NullPointerException if position is null.
      */
-    public BoardItem getEntry(Position position) throws IndexOutOfBoundsException, NullPointerException {
+    public BoardItem getEntry(Position position)
+            throws IndexOutOfBoundsException, NullPointerException {
         if (position == null) {
             throw new NullPointerException();
         } else if (position.getX() < 0 || position.getX() > width - 1) {
@@ -135,16 +143,18 @@ public class PacmanBoard {
     }
 
     /**
-     * Tries to eat a dot off the board and returns the item that it ate/tried to eat.
+     * Tries to eat dot off the board, returns the item that it ate/tried to eat.
      * If a BoardItem.DOT is eaten then it is replaced with a BoardItem.NONE.
-     * If a BoardItem.BIG_DOT is eaten then it is replaced with a BoardItem.BIG_DOT_SPAWN.
-     * If the item is any other BoardItem then do nothing and return the item.     *
+     * If a BoardItem.BIG_DOT is eaten, replace with a BoardItem.BIG_DOT_SPAWN.
+     * If the item is any other BoardItem then do nothing and return the item.
      * @param position to eat
      * @return the item that was originally the position before trying to eat.
-     * @throws IndexOutOfBoundsException when the position trying to be eaten is not within the board.
+     * @throws IndexOutOfBoundsException when the position trying to be eaten is
+     * not within the board.
      * @throws NullPointerException if position is null.
      */
-    public BoardItem eatDot(Position position) throws IndexOutOfBoundsException, NullPointerException {
+    public BoardItem eatDot(Position position)
+            throws IndexOutOfBoundsException, NullPointerException {
         // Check exceptions first
         if (position == null) {
             throw new NullPointerException();
@@ -168,37 +178,41 @@ public class PacmanBoard {
     }
 
     /**
-     * Get the spawn position for the ghosts. (Requires: board to contain 0 or 1 GHOST_SPAWN's)
-     * @return the position of the ghost spawn or null if none found.
+     * Returns the position of the spawn location on the board.
+     *      EDIT - Feedback from Assignment 1
+     *      (remove code duplication with getPacmanSpawn and getGhostSpawn)
+     * @param spawnType BoardItem.GHOST_SPAWN or BoardItem.PACMAN_SPAWN
+     * @return Position of spawn typle
      */
-    public Position getGhostSpawn() {
+    private Position getSpawn(BoardItem spawnType) {
         for (int column = 0; column < width; column++) {
             for (int row = 0; row < height; row++) {
-                // Check each position for GHOST_SPAWN
-                if (board[row][column] == BoardItem.GHOST_SPAWN) {
+                // Check each position for spawntype
+                if (board[row][column] == spawnType) {
                     return new Position(column, row);
                 }
             }
         }
-        // No GHOST_SPAWN found
+        // No SPAWN found
         return null;
     }
 
     /**
-     * Get the spawn position for pacman. (Requires: board to contain 0 or 1 PACMAN_SPAWN's)     *
+     * Get the spawn position for the ghosts.
+     * (Requires: board to contain 0 or 1 GHOST_SPAWN's)
+     * @return the position of the ghost spawn or null if none found.
+     */
+    public Position getGhostSpawn() {
+        return getSpawn(BoardItem.GHOST_SPAWN);
+    }
+
+    /**
+     * Get the spawn position for pacman.
+     * (Requires: board to contain 0 or 1 PACMAN_SPAWN's)
      * @return the postion of pacmans spawn or null if none found.
      */
     public Position getPacmanSpawn() {
-        for (int column = 0; column < width; column++) {
-            for (int row = 0; row < height; row++) {
-                // Check each position for PACMAN_SPAWN
-                if (board[row][column] == BoardItem.PACMAN_SPAWN) {
-                    return new Position(column, row);
-                }
-            }
-        }
-        // No PACMAN_SPAWN found
-        return null;
+        return getSpawn(BoardItem.PACMAN_SPAWN);
     }
 
     /**
@@ -209,7 +223,8 @@ public class PacmanBoard {
         for (int column = 0; column < width; column++) {
             for (int row = 0; row < height; row++) {
                 // Check each position for DOT or BIG DOT
-                if (board[row][column] == BoardItem.DOT || board[row][column] == BoardItem.BIG_DOT) {
+                if (board[row][column] == BoardItem.DOT
+                        || board[row][column] == BoardItem.BIG_DOT) {
                     return false;
                 }
             }
@@ -219,8 +234,9 @@ public class PacmanBoard {
     }
 
     /**
-     * Resets the board to place a DOT in every position that has no item ( NONE BoardItem ) and respawns BIG_DOT's
-     * in the BIG_DOT_SPAWN locations. Leaves walls, pacman spawns and ghost spawns intact.
+     * Resets the board to place a DOT in every position that has no item
+     * (NONE BoardItem) and respawns BIG_DOT's in the BIG_DOT_SPAWN locations.
+     * Leaves walls, pacman spawns and ghost spawns intact.
      */
     public void reset() {
 

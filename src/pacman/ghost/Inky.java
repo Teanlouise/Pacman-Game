@@ -7,7 +7,8 @@ import pacman.util.Position;
 
 /**
  * Inky is a ghost that likes to tail close behind the hunter.
- * When not chasing the hunter down, Inky likes to hang out in the bottom right corner of the board in a blue glow
+ * When not chasing the hunter down, Inky likes to hang out in the bottom right
+ * corner of the board in a blue glow
  */
 public class Inky extends Ghost {
 

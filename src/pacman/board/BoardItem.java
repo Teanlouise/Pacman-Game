@@ -5,7 +5,7 @@ public enum BoardItem {
     WALL(false, 0, 'X'),
     DOT(true, 10, '1'),
     BIG_DOT(true, 15, 'B'),
-    BIG_DOT_SPAWN(true, 0 , 'b'),
+    BIG_DOT_SPAWN(true, 0, 'b'),
     GHOST_SPAWN(true, 0, '$'),
     PACMAN_SPAWN(true, 0, 'P');
 
@@ -23,7 +23,7 @@ public enum BoardItem {
      * Gets the score of the item
      * @return the score associated with an item
      */
-    public int getScore(){
+    public int getScore() {
         return score;
     }
 
@@ -44,13 +44,16 @@ public enum BoardItem {
     }
 
     /**
-     * Takes a character and returns the associated BoardItem as presented in the Enum comment's "Enum definition" table. see BoardItem
-     * @param key a character that represents the board item. The acceptable characters are defined in the Enum's "Enum definition" table.
+     * Takes a character and returns the associated BoardItem as presented in
+     * the Enum comment's "Enum definition" table. see BoardItem
+     * @param key a character that represents the board item. The acceptable
+     * characters are defined in the Enum's "Enum definition" table.
      * @return the board Item associated with the character
-     * @throws IllegalArgumentException if the character is not part of the supported Items
+     * @throws IllegalArgumentException if the character is not part of the
+     * supported Items
     */
      public static BoardItem getItem(char key) throws IllegalArgumentException {
-        switch (key){
+        switch (key) {
             case '0':
                 return NONE;
             case 'X':

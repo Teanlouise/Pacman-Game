@@ -5,7 +5,8 @@ import pacman.util.Position;
 
 /**
  * Clyde is a ghost that behaves in a very scared manner when close to a hunter.
- * When not chasing the hunter down, clyde likes to hang out in the bottom left corner of the board in a orange glow.
+ * When not chasing the hunter down, clyde likes to hang out in the bottom left
+ * corner of the board in a orange glow.
  */
 public class Clyde extends Ghost {
 

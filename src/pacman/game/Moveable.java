@@ -8,8 +8,8 @@ import pacman.util.Position;
  */
 public interface Moveable {
 
-     /**
-     *  Sets the position of the entity, if position is null the position is not set.
+    /**
+     *  Sets the position of the entity, if position is null the position not set.
      * @param position - to set to the Moveable
      */
     void setPosition(Position position);
@@ -21,12 +21,13 @@ public interface Moveable {
     Position getPosition();
 
     /**
-     * Sets the direction of the entity, if direction is null the direction is not set and remains the same.
+     * Sets the direction of the entity, if direction is null the direction is
+     * not set and remains the same.
      * @param direction to be set.
      */
     void setDirection(Direction direction);
 
-     /**
+    /**
      * Gets the direction that this Moveable is facing.
      * @return the current direction of the Movable.
      */

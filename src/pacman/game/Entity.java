@@ -4,7 +4,8 @@ import pacman.util.Direction;
 import pacman.util.Position;
 
 /**
- * Entity A entity is the animated objects in the game that can traverse the game board and interact with other entities.
+ * Entity A entity is the animated objects in the game that can traverse the
+ * game board and interact with other entities.
  */
 public abstract class Entity implements Moveable {
     private Position position;
@@ -19,9 +20,10 @@ public abstract class Entity implements Moveable {
     }
 
     /**
-     * Creates an entity that is at the given position facing in the given direction.
-     * If the position is null then the position will be the same as the default position ( 0, 0 ).
-     * If the direction is null then the direction will be the same as the default ( UP ).
+     * Creates an entity at the given position facing in the given direction.
+     * If the position is null then the position will be the same as the
+     * default position ( 0, 0 ). If the direction is null then the direction
+     * will be the same as the default ( UP ).
      * @param position to be set to.
      * @param direction to be facing.
      */
@@ -51,7 +53,7 @@ public abstract class Entity implements Moveable {
     }
 
     /**
-     * Sets the position of the entity, if position is null the position is not set.
+     * Sets the position of the entity, if position is null the position not set.
      * @since setPosition in interface Moveable
      * @param position to set to the Moveable
      */
@@ -73,7 +75,8 @@ public abstract class Entity implements Moveable {
     }
 
     /**
-     * Sets the direction of the entity, if the direction is null the direction is not set and remains the same.
+     * Sets the direction of the entity, if the direction is null the direction
+     * is not set and remains the same.
      * @since setDirection in interface Moveable
      * @param direction to be set.
      */
@@ -113,7 +116,7 @@ public abstract class Entity implements Moveable {
 
     /**
      * Represents this entity in a comma-seperated string format.
-     * Format is: "x,y,DIRECTION", where DIRECTION is the uppercase enum type value.
+     * Format is: "x,y,DIRECTION", where DIRECTION is uppercase enum type value.
      * Example: 4,5,LEFT
      * @return "x,y,DIRECTION"
      */

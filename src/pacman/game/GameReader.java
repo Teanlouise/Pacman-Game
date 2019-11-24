@@ -234,8 +234,8 @@ public class GameReader {
      * @param hunter initiated for this game
      * @return the hunter with all the new parameters
      */
-    private static Hunter readHunter(String[] valueArray, Hunter hunter, PacmanBoard board) throws
-            UnpackableException {
+    private static Hunter readHunter(String[] valueArray, Hunter hunter, PacmanBoard board)
+            throws UnpackableException {
 
         // HUNTER - A comma separated list of attributes in the following order:
         // x, y, DIRECTION, special duration, HunterType
@@ -286,8 +286,8 @@ public class GameReader {
      * @param ghost type to be initiated
      * @return ghost with all parameters set as given in file
      */
-    private static Ghost readGhost(String[] valueArray, Ghost ghost, PacmanBoard board) throws
-            UnpackableException {
+    private static Ghost readGhost(String[] valueArray, Ghost ghost, PacmanBoard board)
+            throws UnpackableException {
 
         // blinky|inky|pinky|clyde
         // A comma separated list of attributes in the following order:
@@ -325,8 +325,8 @@ public class GameReader {
      * @return the map of scores for this game according to the file
      * @throws IOException if file cannot be read
      */
-    private static void readScores(BufferedReader r2, String line, PacmanGame game) throws
-            IOException, UnpackableException{
+    private static void readScores(BufferedReader r2, String line, PacmanGame game)
+            throws IOException, UnpackableException{
 
         // A newline seperated list of unique scores in form of: 'Name : Value'
         Map<String, Integer> scoreList = new HashMap<>();

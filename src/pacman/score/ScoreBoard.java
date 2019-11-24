@@ -5,7 +5,8 @@ import java.util.stream.Stream;
 
 /**
  * ScoreBoard contains previous scores and the current score of the PacmanGame.
- * A score is a name and value that a valid name only contains the following characters:
+ * A score is a name and value that a valid name only contains the following
+ * characters:
  *      - A to Z
  *      - a to z
  *      - 0 to 9
@@ -48,7 +49,8 @@ public class ScoreBoard {
      * - Score name with a single space afterwards
      * - A single colon
      * - A space then the value of the score with no leading zeros.
-     * @return List of scores formatted as "NAME : VALUE" in the order described above or an empty list if no entries are stored.
+     * @return List of scores formatted as "NAME : VALUE" in the order described
+     * above or an empty list if no entries are stored.
      */
     public List<String> getEntriesByName() {
         List<String> lexiList = new ArrayList<>();
@@ -61,15 +63,20 @@ public class ScoreBoard {
     }
 
     /**
-     * Gets the stored entries ordered by the score in descending order ( 9999 first then 9998 and so on ...)
-     * then in lexicographic order of the name if the scores match. The format of the list should be:
+     * Gets the stored entries ordered by the score in descending order
+     * ( 9999 first then 9998 and so on ...), then in lexicographic order of
+     * the name if the scores match. The format of the list should be:
      * - Score name with a single space afterwards
      * - A single colon
      * - A space then the value of the score with no leading zeros.
-     * @return List of scores formatted as "NAME : VALUE" in the order described above or an empty list if no entries are stored.
+     *
+     * @return List of scores formatted as "NAME : VALUE" in the order described
+     * above or an empty list if no entries are stored.
      */
     public List<String> getEntriesByScore() {
-        // entries is TreeMap so already in lexi order and then stream sorts in descending order by value
+        // entries is TreeMap so already in lexi order and then stream sorts
+        // in descending order by value
+        // TODO: 11/24/19 Look at alternative way to stream (shorter)
         Stream<Map.Entry<String, Integer>> descStream = scores.entrySet().stream().sorted(Collections.reverseOrder(Map.Entry.comparingByValue()));
         Iterator<Map.Entry<String, Integer>> it = descStream.iterator();
         List<String> descList = new ArrayList<>();
@@ -86,7 +93,8 @@ public class ScoreBoard {
      * - name is not null
      * - name is a valid score name
      * - score is equal to or greater than zero.
-     * This should override any score stored for the given name if name and score are valid.
+     * This should override any score stored for the given name if name and
+     * score are valid.
      * @param name of scorer
      * @param score to set to the given name
      */
@@ -97,11 +105,13 @@ public class ScoreBoard {
     }
 
     /**
-     * Sets a collection of scores if "scores" is not null, otherwise no scores are modified. For each score contained in the scores if:
+     * Sets a collection of scores if "scores" is not null, otherwise no scores
+     * are modified. For each score contained in the scores if:
      * - name is not null
      * - name is a valid score name
      * - score is equal to or greater than zero.
-     * - the score will be set and override any stored score for the given name, otherwise it will be skipped.
+     * - the score will be set and override any stored score for the given name,
+     * otherwise it will be skipped.
      * @param scores to add
      */
     public void setScores(Map<String, Integer> scores) {
@@ -113,7 +123,8 @@ public class ScoreBoard {
     }
 
     /**
-     * Increases the score if the given additional is greater than 0. No change to the current score if
+     * Increases the score if the given additional is greater than 0. No change
+     * to the current score if
      * additional is less than or equal to 0.
      * @param additional score to add
      */

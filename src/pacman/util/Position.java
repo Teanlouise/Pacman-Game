@@ -3,7 +3,7 @@ package pacman.util;
 /**
  * Similar to a Point Class but instead called Position
  */
-public class Position extends Object{
+public class Position {
     private int x;
     private int y;
 
@@ -11,7 +11,7 @@ public class Position extends Object{
      * @param x new location
      * @param y new location
      */
-    public Position(int x, int y){
+    public Position(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -20,7 +20,7 @@ public class Position extends Object{
      * Gets the X axis location
      * @return x position
      * */
-    public int getX(){
+    public int getX() {
         return x;
     }
 
@@ -28,15 +28,15 @@ public class Position extends Object{
      * Gets the Y axis location
      * @return x position
      * */
-    public int getY(){
+    public int getY() {
         return y;
     }
 
-    /** Calculates the Euclidean distance from this point to the given other point.
+    /** Calculates the Euclidean distance from this point to other given point.
      * @param other point to calc distance too.
      * @return the euclidean distance
      */
-    public double distance(Position other){
+    public double distance(Position other) {
         return  Math.sqrt(Math.pow(this.getX() - other.getX(), 2)
                 + Math.pow(this.getY() - other.getY(), 2));
     }
@@ -46,16 +46,17 @@ public class Position extends Object{
      * @param other position to add to this line
      * @return this position + other
      */
-    public Position add(Position other){
+    public Position add(Position other) {
         return new Position(this.x + other.x, this.y + other.y);
     }
 
     /**
      * Multiplies by a factor on the x and y axis.
      * @param factor to multiple the axis by.
-     * @return a new position with the x axis scaled by factor and y axis scaled by factor.
+     * @return a new position with the x axis scaled by factor and y axis
+     * scaled by factor.
      */
-    public Position multiply(int factor){
+    public Position multiply(int factor) {
         return new Position(this.x * factor, this.y * factor);
     }
 
@@ -75,8 +76,9 @@ public class Position extends Object{
     }
 
     /**
-     * Calculates the hash of the position. For two objects that are equal the hash should also be equal.
-     * For two objects that are not equal the hash does not have to be different.
+     * Calculates the hash of the position. For two objects that are equal the
+     * hash should also be equal. For two objects that are not equal the hash
+     * does not have to be different.
      * @return hash of this position.
      */
     @Override
