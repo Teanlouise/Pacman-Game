@@ -1,0 +1,33 @@
+.text-area {
+    text-area-background: #00033D;
+    -fx-text-fill: yellow;
+    -fx-background-color: #00033D;
+    -fx-background-radius:0;
+    -fx-padding: 5 0 5 0;
+}
+
+.text-area .content {
+    -fx-background-color: text-area-background ;
+}
+
+.header-text {
+    -fx-background-color: #00033D;
+    -fx-text-fill: yellow;
+    -fx-font: 16px Tahoma;
+    -fx-padding: 2 0 2 0;
+}
+
+.button {
+    -fx-text-fill: yellow;
+    -fx-background-color: #01141C;
+    -fx-background-radius:0;
+    -fx-border-color:yellow;
+    -fx-border-getWidth: 1 1 1 1;
+    -fx-padding: 5 0 5 0;
+}
+
+.list-cell {
+    -fx-text-fill: white;
+    -fx-background-color: #00033D;
+    -fx-alignment: center;
+}

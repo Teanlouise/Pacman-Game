@@ -1,0 +1,38 @@
+; Default CSSE2002 Pacman Map
+; board Keys
+; getWidth, getHeight
+;   - X Wall
+;   - 0 No Item, 1 dots
+;   - B Big dots spawn ( occupied ), b big dot spawn ( not occupied )
+;   - $ Ghost spawn zone
+;   - P pacman spawn zone
+[Board]
+25,9
+XXXXXXXXXXXXXXXXXXXXXXXXX
+X10000000000000000000000X
+X00000B00000X000000B0000X
+X00000000000X00000000000X
+X0000000XXXXXXXXX0000000X
+X00000000000X00000000000X
+X00000B000000000000B0000X
+XP0000000000X0000000000$X
+XXXXXXXXXXXXXXXXXXXXXXXXX
+
+[Game]
+title = Default CSSE2002 PacMan Map
+author = Evan Hughes
+lives = 5
+level = 2
+score = 123
+hunter = 1,1,LEFT,20,PHIL
+blinky = 3,6,UP,FRIGHTENED:15
+inky = 1,6,UP,SCATTER:7
+pinky = 8,6,UP,FRIGHTENED:15
+clyde = 6,4,UP,CHASE:4
+
+; Must have one blank line between each block.
+; Comments do not count as a line
+[Scores]
+A : 0
+B : 5
+C : 100
