@@ -5,6 +5,7 @@ import pacman.ghost.*;
 import pacman.hunter.Hunter;
 import pacman.score.ScoreBoard;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -182,7 +183,7 @@ public class PacmanGame {
         hunter.move(this);
 
         // 2 - Hit ghosts
-        for (Ghost g : getGhosts()) {
+        for (Ghost g : ghostList) {
             hunter.hit(g);
             // 3 - Ghost alive & tick even
             if (!(g.isDead()) && tick % 2 == 0) {
@@ -244,7 +245,7 @@ public class PacmanGame {
      * Phase.FRIGHTENED.getDuration();
      */
     public void setGhostsFrightened() {
-        for (Ghost g : getGhosts()) {
+        for (Ghost g : ghostList) {
             g.setPhase(Phase.FRIGHTENED, Phase.FRIGHTENED.getDuration());
         }
     }
@@ -254,7 +255,7 @@ public class PacmanGame {
      * the ghost's positions at the GHOSTSPAWN location on the board.
      */
     private void resetAllGhosts() {
-        for (Ghost g : getGhosts()) {
+        for (Ghost g : ghostList) {
             g.reset();
             g.setPosition(board.getGhostSpawn());
         }

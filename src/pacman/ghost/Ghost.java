@@ -185,8 +185,8 @@ public abstract class Ghost extends Entity {
         int boardHeight = game.getBoard().getHeight();
         Position current = getPosition();
 
-        int targetX = (current.getX() * 24 % (2 * boardWidth)) - boardWidth;
-        int targetY = (current.getY() * 36 % (2 * boardHeight)) - boardHeight;
+        int targetX = ((current.getX() * 24) % (2 * boardWidth)) - boardWidth;
+        int targetY = ((current.getY() * 36) % (2 * boardHeight)) - boardHeight;
         return new Position(targetX, targetY);
     }
 
@@ -230,10 +230,8 @@ public abstract class Ghost extends Entity {
         // Directions put in list in opposite order, go through each
         List<Direction> directionList = Arrays.asList(
                 Direction.RIGHT, Direction.DOWN, Direction.LEFT, Direction.UP);
-        // initialise smallest distance as the largest possible distance on board
-        int boardHeight = game.getBoard().getHeight();
-        int boardWidth = game.getBoard().getWidth();
-        double smallestDistance = Math.max(boardHeight, boardWidth);
+        // initialise smallest distance as the largest possible double value
+        double smallestDistance = Double.MAX_VALUE;
         Position targetPosition = getTarget(game);
 
         for (Direction d : directionList) {

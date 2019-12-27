@@ -221,6 +221,11 @@ public abstract class Hunter extends Entity {
                 setPosition(newPosition);
                 // eat item
                 board.eatDot(getPosition());
+                // check if item was BIG_DOT
+                if (item == BoardItem.BIG_DOT) {
+                    // Yes so set all ghosts to frightened
+                    game.setGhostsFrightened();
+                }
                 // add score
                 game.getScores().increaseScore(item.getScore());
             }
