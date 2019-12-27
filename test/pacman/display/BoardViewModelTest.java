@@ -11,6 +11,7 @@ import pacman.hunter.Hungry;
 import pacman.util.Direction;
 import pacman.util.Position;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -195,6 +196,13 @@ public class BoardViewModelTest {
 
         // Check there are exactly 4 ghosts in the list
         assertEquals(4, ghostList.size());
+
+        // TODO: 11/27/19 Check that has one of each of the ghosts (test board4 passed with same ghost)
+//        for (int i = 0; i < model.getGhosts().size(); i++) {
+//            Ghost ghost = model.getGhosts().get(0);
+//            Pair<Position, String> info;
+//            if (ghost.getPhase() == Phase.FRIGHTENED) {
+
 
         // Check that each ghost matches its position and colour
         for (Pair<Position, String> g : ghostList) {

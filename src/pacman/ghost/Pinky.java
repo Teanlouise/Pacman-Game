@@ -37,10 +37,11 @@ public class Pinky extends Ghost {
      */
     @Override
     public Position chaseTarget(PacmanGame game) {
+        // TODO: 11/27/19 ORIGINAL (check Phase) or NEW (no check)?
         // default - no change to current position
         Position targetPosition = getPosition();
         // CHASE - target hunter position
-        if (getPhase() == Phase.CHASE) {
+        // if (getPhase() == Phase.CHASE) { -> ORIGINAL
             int hunterX = game.getHunter().getPosition().getX();
             int hunterY = game.getHunter().getPosition().getY();
             Direction hunterDirection = game.getHunter().getDirection();
@@ -62,7 +63,7 @@ public class Pinky extends Ghost {
                     targetPosition = new Position(hunterX - 4, hunterY);
                     break;
             }
-        }
+        //}
         return targetPosition;
     }
 
@@ -75,12 +76,17 @@ public class Pinky extends Ghost {
      */
     @Override
     public Position home(PacmanGame game) {
-        // default - no change to current position
-        Position homePosition = getPosition();
-        // SCATTER - get home position
-        if (getPhase() == Phase.SCATTER) {
-            return new Position(-1, -1);
-        }
-        return homePosition;
+        // TODO: 11/27/19 ORIGINAL (check Phase) or NEW (no check)?
+        // ORIGINAL
+//        // default - no change to current position
+//        Position homePosition = getPosition();
+//        // SCATTER - get home position
+//        if (getPhase() == Phase.SCATTER) {
+//            return new Position(-1, -1);
+//        }
+//        return homePosition;
+
+        // NEW
+        return new Position(-1, -1);
     }
 }

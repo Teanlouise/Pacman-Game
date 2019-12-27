@@ -39,18 +39,28 @@ public class Clyde extends Ghost {
      */
     @Override
     public Position chaseTarget(PacmanGame game) {
-        // default - no change to current position
-        Position targetPosition = getPosition();
-        // CHASE - Initialise home as default
-        if (getPhase() == Phase.CHASE) {
-            targetPosition = home(game);
-            // Check if distance to hunter is greater than 8
-            Position hunterPosition = game.getHunter().getPosition();
-            if (getPosition().distance(hunterPosition) >= 8) {
-                targetPosition = hunterPosition;
-            }
+        // TODO: 11/27/19 ORIGINAL (check Phase) or NEW (no check)?
+        // ORIGINAL
+//        // default - no change to current position
+//        Position targetPosition = getPosition();
+//        // CHASE - Initialise home as default
+//        if (getPhase() == Phase.CHASE) {
+//            targetPosition = home(game);
+//            // Check if distance to hunter is greater than 8
+//            Position hunterPosition = game.getHunter().getPosition();
+//            if (getPosition().distance(hunterPosition) >= 8) {
+//                targetPosition = hunterPosition;
+//            }
+//        }
+//        return targetPosition;
+
+        // NEW
+        Position hunterPosition = game.getHunter().getPosition();
+        if (getPosition().distance(hunterPosition) >= 8) {
+            return hunterPosition;
+        } else {
+            return home(game);
         }
-        return targetPosition;
     }
 
     /**
@@ -61,12 +71,17 @@ public class Clyde extends Ghost {
      */
     @Override
     public Position home(PacmanGame game) {
-        // default - no change to current position
-        Position homePosition = getPosition();
-        // SCATTER - get home position
-        if (getPhase() == Phase.SCATTER) {
-            homePosition = new Position(-1, game.getBoard().getHeight());
-        }
-        return homePosition;
+        // TODO: 11/27/19 ORIGINAL (check Phase) or NEW (no check)?
+        // ORIGINAL
+//        // default - no change to current position
+//        Position homePosition = getPosition();
+//        // SCATTER - get home position
+//        if (getPhase() == Phase.SCATTER) {
+//            homePosition = new Position(-1, game.getBoard().getHeight());
+//        }
+//        return homePosition;
+
+        // NEW
+        return new Position(-1, game.getBoard().getHeight());
     }
 }

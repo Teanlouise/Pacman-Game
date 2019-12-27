@@ -6,6 +6,7 @@ import org.junit.Test;
 import pacman.board.BoardItem;
 import pacman.board.PacmanBoard;
 import pacman.game.PacmanGame;
+import pacman.hunter.Hunter;
 import pacman.hunter.Speedy;
 import pacman.util.Direction;
 import pacman.util.Position;
@@ -503,6 +504,46 @@ public class GhostTest {
         // 5 - Position set to (2,2)
         assertEquals(Direction.LEFT, blinkyTwo.getDirection());
         assertEquals(new Position(1, 3), blinkyTwo.getPosition());
+    }
+
+
+    private class HunterEntity extends Hunter {
+
+        public HunterEntity() {
+            super();
+        }
+
+        public HunterEntity(Hunter hunter) {
+            super(hunter);
+        }
+
+    }
+    @Test
+    public void testChaseTarget() {
+        Hunter hunter = new HunterEntity();
+        hunter.setPosition(new Position(5, 8));
+        PacmanBoard board = new PacmanBoard(10, 18);
+        game = new PacmanGame("title", "author",
+                hunter, board);
+
+
+        Clyde clyde = new Clyde();
+        clyde.setPosition(new Position(3, 7));
+        assertEquals(new Position(-1, 18), clyde.chaseTarget(game));
+
+        Inky inky = new Inky();
+        inky.setPosition(new Position(3,7));
+        assertEquals(new Position(5, 10), inky.chaseTarget(game));
+
+    }
+
+    @Test
+    public void testChaseTarget2() {
+        Clyde clyde = new Clyde();
+
+        game.getHunter().setPosition(new Position(8, 11));
+
+        assertEquals(new Position(8,11), clyde.chaseTarget(game));
     }
 
     @After

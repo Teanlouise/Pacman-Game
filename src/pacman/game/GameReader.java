@@ -37,13 +37,13 @@ public class GameReader {
         PacmanBoard board = new PacmanBoard(1,1);
         Hunter hunter = new Hungry();
         PacmanGame game = new PacmanGame("title","author", hunter, board);
-        BufferedReader r2 = new BufferedReader(reader);
+        BufferedReader br = new BufferedReader(reader);
 
         // Use currentStage to track order of blocks:
         // 0 - Board, 1 - Empty, 2 - Game, 3 - Empty, 4 - Score
         int currentStage = 0;
         try {
-            for (String line = r2.readLine(); line != null; line = r2.readLine()) {
+            for (String line = br.readLine(); line != null; line = br.readLine()) {
                 // There must be no empty lines before the first block
                 if (line.equals(System.lineSeparator()) || line.equals("")) {
                     // In between blocks there must be a single blank line.
@@ -53,17 +53,17 @@ public class GameReader {
                     continue;
                 } else if (line.equals("[Board]") && currentStage == 0) {
                     // Board found first
-                    board = readBoard(r2);
+                    board = readBoard(br);
                     // Board complete, move to next stage
                     currentStage++;
                 } else if (line.equals("[Game]") && currentStage == 2) {
                     // Game found second
-                    game = readGame(game,board,hunter,r2);
+                    game = readGame(game,board,hunter,br);
                     // Game done, move to next stage
                     currentStage++;
                 } else if (line.equals("[Scores]") && currentStage == 4) {
                     // Scores found third
-                    readScores(r2, line, game);
+                    readScores(br, line, game);
                     // Score finished, the end
                     currentStage++;
                 } else {
@@ -140,12 +140,13 @@ public class GameReader {
      * @param game being read
      * @param board for this game instance
      * @param hunter for this game instance
-     * @param r2 to read line at a time
+     * @param br to read line at a time
      * @return the game with all assignments set with new given parameters
      * @throws UnpackableException when data is invalid
      * @throws IOException if game cannot be read
      */
-    private static PacmanGame readGame(PacmanGame game, PacmanBoard board, Hunter hunter, BufferedReader r2) throws
+    // TODO: 11/25/19 Shorten method
+    private static PacmanGame readGame(PacmanGame game, PacmanBoard board, Hunter hunter, BufferedReader br) throws
             UnpackableException, IOException {
 
         // Contains newline separated list of assignments
@@ -164,7 +165,7 @@ public class GameReader {
         int gameCount = 0;
         // An assignment is a 'Key = Value' where the Key and Value
         for (int i = 0; i < 10; i++) {
-            String assignments = r2.readLine();
+            String assignments = br.readLine();
             String[] valueArray = assignments.split(" = ");
             switch (valueArray[0]) {
                 case "title":
@@ -320,19 +321,19 @@ public class GameReader {
 
     /**
      * Read [Game] block of the board and check all parameters
-     * @param r2 to read each line of the scores
+     * @param br to read each line of the scores
      * @param line of the scores
      * @return the map of scores for this game according to the file
      * @throws IOException if file cannot be read
      */
-    private static void readScores(BufferedReader r2, String line, PacmanGame game)
+    private static void readScores(BufferedReader br, String line, PacmanGame game)
             throws IOException, UnpackableException{
 
         // A newline seperated list of unique scores in form of: 'Name : Value'
         Map<String, Integer> scoreList = new HashMap<>();
         // Keep track of order of scores
         List<String> myList = new ArrayList<String>();
-        while ((line = r2.readLine()) != null) {
+        while ((line = br.readLine()) != null) {
             String[] scoreArray = line.split(" : ");
             // entry must be unique, check if already exists
             isInvalid(scoreList.get(scoreArray[0]) != null);

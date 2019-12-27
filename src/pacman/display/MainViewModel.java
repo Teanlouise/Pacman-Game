@@ -195,7 +195,7 @@ public class MainViewModel {
      * @require input != null
      */
     public void accept(String input) {
-        input.toUpperCase();
+        input = input.toUpperCase();
 
         // Available anytime
         switch (input) {

@@ -37,13 +37,18 @@ public class Blinky extends Ghost {
      */
     @Override
     public Position chaseTarget(PacmanGame game) {
-        // default - no change to current position
-        Position targetPosition = getPosition();
-        // CHASE - target hunter position
-        if (getPhase() == Phase.CHASE) {
-            targetPosition = game.getHunter().getPosition();
-        }
-        return targetPosition;
+        // TODO: 11/27/19 ORIGINAL (check Phase) or NEW (no check)?
+        // ORIGINAL
+//        // default - no change to current position
+//        Position targetPosition = getPosition();
+//        // CHASE - target hunter position
+//        if (getPhase() == Phase.CHASE) {
+//            targetPosition = game.getHunter().getPosition();
+//        }
+//        return targetPosition;
+
+        // NEW
+        return game.getHunter().getPosition();
     }
 
     /**
@@ -53,12 +58,17 @@ public class Blinky extends Ghost {
      */
     @Override
     public Position home(PacmanGame game) {
-        // default - no change to current position
-        Position homePosition = getPosition();
-        // SCATTER - get home position
-        if(getPhase() == Phase.SCATTER) {
-            homePosition = new Position(game.getBoard().getWidth(), -1);
-        }
-        return homePosition;
+        // TODO: 11/27/19 ORIGINAL (check Phase) or NEW (no check)?
+        // ORIGINAL
+//        // default - no change to current position
+//        Position homePosition = getPosition();
+//        // SCATTER - get home position
+//        if(getPhase() == Phase.SCATTER) {
+//            homePosition = new Position(game.getBoard().getWidth(), -1);
+//        }
+//        return homePosition;
+
+        // NEW
+        return new Position(game.getBoard().getWidth(), -1);
     }
 }

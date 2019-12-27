@@ -39,10 +39,11 @@ public class Inky extends Ghost {
      */
     @Override
     public Position chaseTarget(PacmanGame game) {
+        // TODO: 11/27/19 ORIGINAL (check Phase) or NEW (no check)?
         // default - no change to current position
         Position targetPosition = getPosition();
         // CHASE - target hunter position
-        if (getPhase() == Phase.CHASE) {
+       // if (getPhase() == Phase.CHASE) { = ORIGINAL
             int hunterX = game.getHunter().getPosition().getX();
             int hunterY = game.getHunter().getPosition().getY();
             Direction hunterDirection = game.getHunter().getDirection();
@@ -64,7 +65,7 @@ public class Inky extends Ghost {
                     targetPosition = new Position(hunterX + 2, hunterY);
                     break;
             }
-        }
+        //}
         return targetPosition;
     }
 
@@ -76,13 +77,19 @@ public class Inky extends Ghost {
      */
     @Override
     public Position home(PacmanGame game) {
-        // default - no change to current position
-        Position homePosition = getPosition();
+        // TODO: 11/27/19 ORIGINAL (check Phase) or NEW (no check)?
+        // ORIGINAL
+//        // default - no change to current position
+//        Position homePosition = getPosition();
+//        PacmanBoard board = game.getBoard();
+//        // SCATTER - get home position
+//        if (getPhase() == Phase.SCATTER) {
+//            homePosition = new Position(board.getWidth(), board.getHeight());
+//        }
+//        return homePosition;
+
+        // NEW
         PacmanBoard board = game.getBoard();
-        // SCATTER - get home position
-        if (getPhase() == Phase.SCATTER) {
-            homePosition = new Position(board.getWidth(), board.getHeight());
-        }
-        return homePosition;
+        return new Position(board.getWidth(), board.getHeight());
     }
 }

@@ -4,11 +4,9 @@ import org.junit.Before;
 import org.junit.Test;
 import pacman.board.BoardItem;
 import pacman.board.PacmanBoard;
-import pacman.game.GameReader;
-import pacman.game.GameWriter;
-import pacman.game.PacmanGame;
 import pacman.ghost.Ghost;
 import pacman.ghost.Phase;
+import pacman.hunter.Hunter;
 import pacman.hunter.Phil;
 import pacman.hunter.Speedy;
 import pacman.score.ScoreBoard;
@@ -39,6 +37,15 @@ public class GameWriterTest {
     private PacmanBoard mapTwoBoard;
     private PacmanGame mapTwoGame;
 
+    // test
+    private String testFile;
+    private String testFileNoComment;
+    private int width = 22;
+    private int height = 15;
+    private String gameFile;
+    String endLine = System.lineSeparator();
+    public PacmanGame testGame;
+
     @Before
     public void setUp() throws Exception {
         gw = new GameWriter();
@@ -60,6 +67,64 @@ public class GameWriterTest {
                 "This is the author of this game, and they have a very long name",
                 mapTwoHunter,
                 mapTwoBoard);
+
+        // Test Setup
+        testFile =  "[Board]" + endLine +
+                "5,5" + endLine  +
+                "XXXXX" + endLine  +
+                "X100X" + endLine  +
+                "X000X" + endLine  +
+                "X000X" + endLine  +
+                "XXXXX" + endLine  +
+                "" + endLine  +
+                "[Game]" + endLine  +
+                "title = PacMan Map" + endLine  +
+                "author = Author Name" + endLine  +
+                "lives = 5" + endLine  +
+                "level = 2" + endLine  +
+                "score = 123" + endLine  +
+                "hunter = 1,1,LEFT,20,PHIL" + endLine  +
+                "blinky = 3,2,UP,FRIGHTENED:15" + endLine  +
+                "inky = 2,4,UP,SCATTER:7" + endLine  +
+                "pinky = 4,3,UP,FRIGHTENED:15" + endLine  +
+                "clyde = 2,2,UP,CHASE:4" + endLine  +
+                "" + endLine  +
+                "[Scores]" + endLine  +
+                "A : 0" + endLine  +
+                "B : 5" + endLine  +
+                "C : 100";
+
+        Hunter testHunter = new Phil();
+        testHunter.setPosition(new Position(5, 8));
+        PacmanBoard testBoard = new PacmanBoard(width, height);
+        testGame = new PacmanGame("title", "author",
+                testHunter, testBoard);
+
+        testFileNoComment = "[Board]" + endLine  +
+                "5,5" + endLine  +
+                "XXXXX" + endLine  +
+                "X100X" + endLine  +
+                "X000X" + endLine  +
+                "X000X" + endLine  +
+                "XXXXX" + endLine  +
+                "" + endLine  +
+                "[Game]" + endLine  +
+                "title = PacMan Map" + endLine  +
+                "author = Author Name" + endLine  +
+                "lives = 5" + endLine  +
+                "level = 2" + endLine  +
+                "score = 123" + endLine  +
+                "hunter = 1,1,LEFT,20,PHIL" + endLine  +
+                "blinky = 3,2,UP,FRIGHTENED:15" + endLine  +
+                "clyde = 2,2,UP,CHASE:4" + endLine  +
+                "inky = 2,4,UP,SCATTER:7" + endLine  +
+                "pinky = 4,3,UP,FRIGHTENED:15" + endLine  +
+                "" + endLine  +
+                "[Scores]" + endLine  +
+                "A : 0" + endLine  +
+                "B : 5" + endLine  +
+                "C : 100";
+
     }
 
     /**
@@ -329,5 +394,22 @@ public class GameWriterTest {
             }
         }
         assertEquals("[Fred : 5, fred : 1000000]", readMapTwo.getScores().getEntriesByName().toString());
+    }
+
+    @Test
+    public void testWriter2() {
+        // ORDER OF GHOSTS DIFFERENT
+        try {
+            PacmanGame game = GameReader.read(new StringReader(testFile));
+
+            StringWriter outputWriter = new StringWriter();
+            GameWriter.write(outputWriter, game);
+            String test = outputWriter.toString();
+
+            assertEquals(testFileNoComment, test);
+
+        } catch (IOException | UnpackableException ioe) {
+            fail();
+        }
     }
 }
