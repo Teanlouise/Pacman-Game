@@ -1,0 +1,26 @@
+[Board]
+12,8
+XXXXXXXXXXXX
+XP000001000X
+X000B000000X
+X000000B000X
+X0000$00000X
+X00B0000000X
+X000000B000X
+XXXXXXXXXXXX
+
+[Game]
+title = Test 3 - small
+author = The author
+lives = 3
+level = 0
+score = 0
+hunter = 5,4,DOWN,0,SPEEDY
+blinky = 1,1,DOWN,CHASE:5
+inky = 6,3,RIGHT,CHASE:5
+pinky = 8,5,UP,SCATTER:5
+clyde = 9,6,LEFT,FRIGHTENED:5
+
+[Scores]
+Fred : 5
+fred : 1000

@@ -1,0 +1,44 @@
+; Commments should be skipped
+; Must have one blank line between each block
+; [Board]
+; 1st line - boardWidth and boardHeight
+; Remaining lines - BOARD_ITEM's on board:
+;  - 1x PACMAN_SPAWN (P)
+;  - 1x GHOST_SPAWN ($)
+;  - Border is WALL (X)
+;  - BIG_DOT (b)
+;  - BIG_DOT_SPAWN (B)
+;  - DOT (1)
+;  - Everything else is no item (0)
+; [GAME]
+; Default starting values
+; Ghosts - One of each phase and direction and all different positions
+; [SCORES]
+; List of existing scores
+[Board]
+13,9
+XXXXXXXXXXXXX
+XP1101110111X
+X1XXX0b0XXX1X
+X1XX00000XX1X
+XB0000$0000BX
+X1XX00000XX1X
+X1XXX0b0XXX1X
+X11101110111X
+XXXXXXXXXXXXX
+
+[Game]
+title = Demo Game
+author = teanlouise
+lives = 3
+level = 5
+score = 0
+hunter = 4,4,LEFT,0,HUNGRY
+blinky = 1,1,DOWN,CHASE:3
+inky = 6,2,UP,CHASE:5
+pinky = 4,7,RIGHT,SCATTER:7
+clyde = 11,4,LEFT,FRIGHTENED:3
+
+[Scores]
+TEAN : 100
+tean : 6758

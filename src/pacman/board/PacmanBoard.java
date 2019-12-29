@@ -268,7 +268,7 @@ public class PacmanBoard {
         StringBuilder sb = new StringBuilder();
         for (int y = 0; y < getHeight(); y++) {
             for (int x = 0; x < getWidth(); x++) {
-                sb.append(board[x][y].getChar());
+                sb.append(board[y][x].getChar());
             }
             // Reached end of row, add line but not for the last line
             if (y != getHeight() - 1) {
