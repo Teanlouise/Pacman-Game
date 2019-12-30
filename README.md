@@ -24,48 +24,79 @@ _The javadoc, specifications and code in ScoreModel, BoardModel and MainModel ar
 ### Overview of the javadoc:
 
 **Pacman**
+
 Launcher       | class      | Main entry point for the CSSE2002/7023 PacMan Game.
 
 **Display**
+
 BoardView      | View representation of the Games playable area.
-BoardViewModel | BoardViewModel is the intermediary between BoardView and the PacmanGame
+
+BoardViewModel | BoardViewModel is the intermediary between BoardView and the PacmanGame.
+
 MainView       | Main entry point for the Pacman View.
-MainViewModel  | Used as an intermediary between the game and the MainView
+
+MainViewModel  | Used as an intermediary between the game and the MainView.
+
 ScoreView      | Represents the view for the score display in the application.
+
 ScoreViewModel | ScoreViewModel is an intermediary between ScoreView and the PacmanGame. Used for displaying the player's score in the GUI.
  
 **Board**
+
 PacmanBoard    |   class   | Represents the Pac Man game board. The board can be any size, it is set out as a grid with each space containing only one BoardItem. Game boards are by default surrounded by a BoardItem.WALL with every other space being BoardItem.NONE. 
+
 BoardItem      |    enum   | This enum defines different items that are placed on the board. Items may have a pickup score if the item can be picked up. Items must define whether they are path-able.
  
 **Game**
+
 Moveable       | interface | An object that can move with a current position and a direction.
+
 Entity         |   class   | A entity is the animated objects in the game that can traverse the game board and interact with other entities.
+
 GameReader     |   class   | GameReader Reads in a saved games state and returns a game instance.
+
 GameWriter     |   class   | Writes the PacmanGame to a standard format.
+
 PacmanGame     |   class   |  PacmanGame stores the game's state and acts as the model for the entire game.
  
 **Ghost**
+
 GhostType      |    enum   | GhostType contains all the valid ghosts; the current list of ghosts are: "BLINKY", "CLYDE", "INKY", "PINKY".
+
 Phase          |    enum   | Phase Defines the different phases a ghost can be in.
+
 Ghost          |   class   | An Abstract Ghost which is a game entity.
+
 Blinky         |   class   | Blinky is a ghost that behaves in a very aggressive manner towards a hunter.
+
 Clyde          |   class   | Clyde is a ghost that behaves in a very scared manner when close to a hunter.
+
 Inky           |   class   | Inky is a ghost that likes to tail close behind the hunter.
+
 Pinky          |   class   | Pinky is a cunning ghost that tries to ambush the hunter.
  
 **Hunter**
+
 HunterType     |    enum   | Definition of HunterType's available in the game.
-Hunter         |   class   | Hunters are entities which are controlled by the player to clear the board and win the game
+
+Hunter         |   class   | Hunters are entities which are controlled by the player to clear the board and win the game.
+
 Hungry         |   class   | A Hungry hunter that has a special ability that allows the hunter to eat ghosts temporarily without them being in a Frightened state.
+
 Phasey         |   class   | A Phasey hunter with a special ability that allows the hunter to travel through ghosts temporarily without dieing.
+
 Phil           |   class   |  A Phil hunter that has no special ability.
+
 Speedy         |   class   | A Speedy hunter that has a special ability that allows the hunter to travel twice as fast.
  
 **Score**
-ScoreBoard     |   class   | ScoreBoard contains previous scores and the current score of the PacmanGame
+
+ScoreBoard     |   class   | ScoreBoard contains previous scores and the current score of the PacmanGame.
  
 **util**
+
 Position       |   class   | Similar to a Point Class but instead called Position.
+
 Direction      |    enum   | Direction represents directions in a 2D plane.
+
 UnpackableException | Exception thrown when a game file cannot be unpacked.
