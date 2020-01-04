@@ -1,6 +1,6 @@
 [Back to Home](https://teanlouise.github.io)
 
-![pacman](https://user-images.githubusercontent.com/19520346/69231371-af492480-0bd4-11ea-8575-e47e0ef59aa9.PNG)
+![pacman_game_title](https://user-images.githubusercontent.com/19520346/71760528-d0f33680-2f0a-11ea-8c11-86afaa22551c.PNG)
 
 This version of the traditional 'Pacman' game was implemented over the course of three assignments for CSSE2002 (Programming in the Large) at the University of Queensland. The overall goal of the project was to gain confidence with writing and testing code in Java that expands multiple classes. The marking criteria was according to correct functionality (55%), code review (25%) and successful tests (20%). Each assignment received a high distinction.
 
