@@ -2,7 +2,7 @@
 <project name="pacman-game" default="all">
   
   
-  <property file="ant test.properties"/>
+  <property file="build.properties"/>
   <!-- Uncomment the following property if no tests compilation is needed -->
   <!-- 
   <property name="skip.tests" value="true"/>
@@ -53,82 +53,6 @@
     <exclude name="**/?*.aj"/>
   </patternset>
   
-  <!-- JDK definitions -->
-  
-  <property name="jdk.bin.11" value="${jdk.home.11}/bin"/>
-  <path id="jdk.classpath.11">
-    <fileset dir="${jdk.home.11}">
-      <include name="../jbr!/java.base"/>
-      <include name="../jbr!/java.compiler"/>
-      <include name="../jbr!/java.datatransfer"/>
-      <include name="../jbr!/java.desktop"/>
-      <include name="../jbr!/java.instrument"/>
-      <include name="../jbr!/java.logging"/>
-      <include name="../jbr!/java.management"/>
-      <include name="../jbr!/java.management.rmi"/>
-      <include name="../jbr!/java.naming"/>
-      <include name="../jbr!/java.net.http"/>
-      <include name="../jbr!/java.prefs"/>
-      <include name="../jbr!/java.rmi"/>
-      <include name="../jbr!/java.scripting"/>
-      <include name="../jbr!/java.se"/>
-      <include name="../jbr!/java.security.jgss"/>
-      <include name="../jbr!/java.security.sasl"/>
-      <include name="../jbr!/java.smartcardio"/>
-      <include name="../jbr!/java.sql"/>
-      <include name="../jbr!/java.sql.rowset"/>
-      <include name="../jbr!/java.transaction.xa"/>
-      <include name="../jbr!/java.xml"/>
-      <include name="../jbr!/java.xml.crypto"/>
-      <include name="../jbr!/javafx.base"/>
-      <include name="../jbr!/javafx.controls"/>
-      <include name="../jbr!/javafx.fxml"/>
-      <include name="../jbr!/javafx.graphics"/>
-      <include name="../jbr!/javafx.media"/>
-      <include name="../jbr!/javafx.swing"/>
-      <include name="../jbr!/javafx.web"/>
-      <include name="../jbr!/jdk.accessibility"/>
-      <include name="../jbr!/jdk.aot"/>
-      <include name="../jbr!/jdk.attach"/>
-      <include name="../jbr!/jdk.charsets"/>
-      <include name="../jbr!/jdk.compiler"/>
-      <include name="../jbr!/jdk.crypto.cryptoki"/>
-      <include name="../jbr!/jdk.crypto.ec"/>
-      <include name="../jbr!/jdk.dynalink"/>
-      <include name="../jbr!/jdk.httpserver"/>
-      <include name="../jbr!/jdk.internal.ed"/>
-      <include name="../jbr!/jdk.internal.jvmstat"/>
-      <include name="../jbr!/jdk.internal.le"/>
-      <include name="../jbr!/jdk.internal.vm.ci"/>
-      <include name="../jbr!/jdk.internal.vm.compiler"/>
-      <include name="../jbr!/jdk.internal.vm.compiler.management"/>
-      <include name="../jbr!/jdk.jdi"/>
-      <include name="../jbr!/jdk.jdwp.agent"/>
-      <include name="../jbr!/jdk.jfr"/>
-      <include name="../jbr!/jdk.jsobject"/>
-      <include name="../jbr!/jdk.localedata"/>
-      <include name="../jbr!/jdk.management"/>
-      <include name="../jbr!/jdk.management.agent"/>
-      <include name="../jbr!/jdk.management.jfr"/>
-      <include name="../jbr!/jdk.naming.dns"/>
-      <include name="../jbr!/jdk.naming.rmi"/>
-      <include name="../jbr!/jdk.net"/>
-      <include name="../jbr!/jdk.pack"/>
-      <include name="../jbr!/jdk.scripting.nashorn"/>
-      <include name="../jbr!/jdk.scripting.nashorn.shell"/>
-      <include name="../jbr!/jdk.sctp"/>
-      <include name="../jbr!/jdk.security.auth"/>
-      <include name="../jbr!/jdk.security.jgss"/>
-      <include name="../jbr!/jdk.unsupported"/>
-      <include name="../jbr!/jdk.xml.dom"/>
-      <include name="../jbr!/jdk.zipfs"/>
-    </fileset>
-  </path>
-  
-  <property name="project.jdk.home" value="${jdk.home.11}"/>
-  <property name="project.jdk.bin" value="${jdk.bin.11}"/>
-  <property name="project.jdk.classpath" value="jdk.classpath.11"/>
-  
   
   <!-- Global Libraries -->
   <!-- Register Custom Compiler Taskdefs -->
@@ -154,9 +78,6 @@
   <dirname property="module.pacman-game.basedir" file="${ant.file}"/>
   
   
-  <property name="module.jdk.home.pacman-game" value="${project.jdk.home}"/>
-  <property name="module.jdk.bin.pacman-game" value="${project.jdk.bin}"/>
-  <property name="module.jdk.classpath.pacman-game" value="${project.jdk.classpath}"/>
   
   <property name="compiler.args.pacman-game" value="-encoding UTF-8 -source 11 -target 11 ${compiler.args}"/>
   
@@ -167,16 +88,13 @@
     <!-- Paths to be included in compilation bootclasspath -->
   </path>
   
-  <path id="pacman-game.module.production.classpath">
-    <path refid="${module.jdk.classpath.pacman-game}"/>
-  </path>
+  <path id="pacman-game.module.production.classpath"/>
   
   <path id="pacman-game.runtime.production.module.classpath">
     <pathelement location="${pacman-game.output.dir}"/>
   </path>
   
   <path id="pacman-game.module.classpath">
-    <path refid="${module.jdk.classpath.pacman-game}"/>
     <pathelement location="${pacman-game.output.dir}"/>
     <pathelement location="${path.variable.maven_repository}/junit/junit/4.12/junit-4.12.jar"/>
     <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"/>
@@ -215,7 +133,7 @@
   
   <target name="compile.module.pacman-game.production" depends="register.custom.compilers" description="Compile module Pacman-Game; production classes">
     <mkdir dir="${pacman-game.output.dir}"/>
-    <javac2 destdir="${pacman-game.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.pacman-game}/javac">
+    <javac2 destdir="${pacman-game.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true">
       <compilerarg line="${compiler.args.pacman-game}"/>
       <bootclasspath refid="pacman-game.module.bootclasspath"/>
       <classpath refid="pacman-game.module.production.classpath"/>
@@ -233,7 +151,7 @@
   
   <target name="compile.module.pacman-game.tests" depends="register.custom.compilers,compile.module.pacman-game.production" description="compile module Pacman-Game; test classes" unless="skip.tests">
     <mkdir dir="${pacman-game.testoutput.dir}"/>
-    <javac2 destdir="${pacman-game.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.pacman-game}/javac">
+    <javac2 destdir="${pacman-game.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true">
       <compilerarg line="${compiler.args.pacman-game}"/>
       <bootclasspath refid="pacman-game.module.bootclasspath"/>
       <classpath refid="pacman-game.module.classpath"/>
