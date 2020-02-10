@@ -1,7 +1,8 @@
 language: java
 jdk:
   - oraclejdk11
-  - openjdk10
   - openjdk11
+before_install:
+  - sudo apt install openjdk-11-jdk openjfx  
 script:
   - ant all
