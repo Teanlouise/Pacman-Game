@@ -3,6 +3,7 @@ jdk:
   - oraclejdk11
   - openjdk11
 before_install:
-  - sudo apt install openjdk-11-jdk openjfx  
+  - sudo apt install openjfx openjfx-source
+  - sudo apt install openjfx
 script:
   - ant all
