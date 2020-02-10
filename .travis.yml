@@ -3,5 +3,3 @@ jdk:
   - oraclejdk11
   - openjdk10
   - openjdk11
-before_install:
-  - cd java
